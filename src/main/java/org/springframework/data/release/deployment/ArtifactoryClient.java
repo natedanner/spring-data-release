@@ -116,6 +116,7 @@ class ArtifactoryClient {
 
 	@Value
 	static class PromotionRequest {
-		String targetRepo, sourceRepo;
+		String targetRepo;
+		String sourceRepo;
 	}
 }

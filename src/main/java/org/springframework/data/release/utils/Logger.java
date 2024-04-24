@@ -33,7 +33,7 @@ public class Logger {
 
 	private static final String PREFIX_TEMPLATE = "%-14s > %s";
 
-	private final java.util.logging.Logger LOGGER = HandlerUtils.getLogger(getClass());
+	private final java.util.logging.Logger logger = HandlerUtils.getLogger(getClass());
 
 	public void log(ModuleIteration module, Object template, Object... args) {
 		log(module.getSupportedProject(), template, args);
@@ -56,7 +56,7 @@ public class Logger {
 	}
 
 	public void log(String context, Object template, Object... args) {
-		LOGGER.info(String.format(PREFIX_TEMPLATE, context, String.format(template.toString(), args)));
+		logger.info(String.format(PREFIX_TEMPLATE, context, String.format(template.toString(), args)));
 	}
 
 	public void warn(ModuleIteration module, Object template, Object... args) {
@@ -76,6 +76,6 @@ public class Logger {
 	}
 
 	public void warn(String context, Object template, Object... args) {
-		LOGGER.warning(String.format(PREFIX_TEMPLATE, context, String.format(template.toString(), args)));
+		logger.warning(String.format(PREFIX_TEMPLATE, context, String.format(template.toString(), args)));
 	}
 }

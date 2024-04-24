@@ -41,7 +41,8 @@ public class DeploymentProperties implements InitializingBean {
 
 	private String settingsXml;
 	private MavenCentral mavenCentral;
-	private Authentication opensource, commercial;
+	private Authentication opensource;
+	private Authentication commercial;
 
 	public Authentication getAuthentication(SupportStatusAware status) {
 		return status.isCommercial() ? commercial : opensource;
@@ -119,7 +120,8 @@ public class DeploymentProperties implements InitializingBean {
 	public static class Authentication {
 
 		Server server;
-		String stagingRepository, targetRepository;
+		String stagingRepository;
+		String targetRepository;
 		String distributionRepository;
 		String project;
 		String username;

@@ -79,9 +79,8 @@ public class GitHubLabels extends GitHubSupport {
 		if (!newLabels.isEmpty()) {
 
 			logger.log(project, "Creating new labels (%d)…", newLabels.size());
-			newLabels.forEach(it -> {
-				operations.postForObject(LABELS_URI, it, JsonNode.class, parameters);
-			});
+			newLabels.forEach(it ->
+				operations.postForObject(LABELS_URI, it, JsonNode.class, parameters));
 		}
 
 		existingLabels.stream().filter(it -> {

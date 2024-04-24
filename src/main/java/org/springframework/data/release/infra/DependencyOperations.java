@@ -155,9 +155,8 @@ public class DependencyOperations {
 			logger.log(module, "No dependency upgrades to apply");
 		}
 
-		return doWithDependencyVersionsAndCommit(tickets, module, dependencyVersions, (dependency, version) -> {
-			upgradeMavenWrapperVersion(module.getSupportedProject(), version);
-		});
+		return doWithDependencyVersionsAndCommit(tickets, module, dependencyVersions, (dependency, version) ->
+			upgradeMavenWrapperVersion(module.getSupportedProject(), version));
 	}
 
 	public List<Project> getProjectsToUpgradeMavenWrapper(DependencyVersion targetVersion, TrainIteration iteration) {
@@ -267,9 +266,8 @@ public class DependencyOperations {
 	public Tickets getOrCreateUpgradeTickets(ModuleIteration module, DependencyVersions dependencyVersions) {
 
 		List<String> summaries = new ArrayList<>();
-		dependencyVersions.forEach((dependency, dependencyVersion) -> {
-			summaries.add(getUpgradeTicketSummary(dependency, dependencyVersion));
-		});
+		dependencyVersions.forEach((dependency, dependencyVersion) ->
+			summaries.add(getUpgradeTicketSummary(dependency, dependencyVersion)));
 
 		return tickets.getOrCreateTicketsWithSummary(module, IssueTracker.TicketType.DependencyUpgrade, summaries);
 	}
@@ -294,9 +292,8 @@ public class DependencyOperations {
 
 			String versionProperty = dependencies.getVersionPropertyFor(dependency);
 			File pom = getPomFile(module.getSupportedProject());
-			update(pom, Pom.class, it -> {
-				it.setProperty(versionProperty, version.getIdentifier());
-			});
+			update(pom, Pom.class, it ->
+				it.setProperty(versionProperty, version.getIdentifier()));
 
 		});
 	}

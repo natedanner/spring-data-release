@@ -146,7 +146,7 @@ public class BuildOperations {
 	 */
 	public void build(TrainIteration iteration) {
 
-		executor.doWithBuildSystemOrdered(iteration, (it, l) -> it.triggerBuild(l));
+		executor.doWithBuildSystemOrdered(iteration, BuildSystem::triggerBuild);
 
 		logger.log(iteration, "Build finished");
 	}

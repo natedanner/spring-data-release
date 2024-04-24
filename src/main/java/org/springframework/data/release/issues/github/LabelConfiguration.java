@@ -33,7 +33,7 @@ import org.springframework.data.util.Streamable;
  *
  * @author Mark Paluch
  */
-class LabelConfiguration implements Streamable<Label> {
+final class LabelConfiguration implements Streamable<Label> {
 
 	public static final Label TYPE_DEPENDENCY_UPGRADE = LabelFactories.TYPE_LABEL.apply("dependency-upgrade",
 			"A dependency upgrade");
@@ -103,7 +103,7 @@ class LabelConfiguration implements Streamable<Label> {
 	 */
 	public static LabelConfiguration commonLabels() {
 
-		LabelConfiguration configuration = LabelConfiguration.of(configurer -> {
+		return LabelConfiguration.of(configurer -> {
 
 			configurer.register(LabelFactories.FOR_LABEL, "external-project",
 					"For an external project and not something we can fix");
@@ -145,8 +145,6 @@ class LabelConfiguration implements Streamable<Label> {
 					"An issue that contains a design decision about its topic");
 			configurer.register(TYPE_TASK);
 		});
-
-		return configuration;
 	}
 
 	/**

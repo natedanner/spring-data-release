@@ -343,6 +343,6 @@ public class Train implements Streamable<SupportedProject>, SupportStatusAware {
 	}
 
 	public enum DocumentationFormat {
-		ASCIIDOC, ANTORA;
+		ASCIIDOC, ANTORA
 	}
 }

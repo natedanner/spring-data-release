@@ -89,7 +89,7 @@ class DefaultProjectClient implements ProjectService {
 		boolean requiresDelete = requiresDeleteVersions(project, versionsToRetain, versionsInWebsite);
 		boolean requiresWrite = requiresWriteVersions(versions, versionsInWebsite);
 
-		if ((requiresDelete) && delete || (requiresWrite && update)) {
+		if (requiresDelete && delete || (requiresWrite && update)) {
 			logger.log(project, "Updating project versions at %s…", resource);
 		}
 

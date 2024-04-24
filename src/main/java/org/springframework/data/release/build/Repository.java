@@ -32,7 +32,8 @@ public class Repository {
 	static Repository COMMERCIAL_RELEASE = new Repository("spring-commercial-release",
 			"https://repo.spring.vmware.com/artifactory/spring-commercial", false, true);
 
-	String id, url;
+	String id;
+	String url;
 	Boolean snapshots;
 	Boolean releases;
 }

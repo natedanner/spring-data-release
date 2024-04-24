@@ -88,25 +88,21 @@ class ProjectServiceOperations {
 		Map<Project, MaintainedVersions> versions = findVersions(openSourceTrains);
 
 		Streamable<Entry<Project, MaintainedVersions>> stream = Streamable.of(versions.entrySet()) //
-				.filter(entry -> {
-					return entry.getKey() != Projects.BOM && entry.getKey() != Projects.JDBC;
-				});
+				.filter(entry -> entry.getKey() != Projects.BOM && entry.getKey() != Projects.JDBC);
 
-		ExecutionUtils.run(executor, stream, entry -> {
+		ExecutionUtils.run(executor, stream, entry ->
 
 			// Sometimes we see 404 Not Found: [no body], sometimes
 			// 400 Bad Request: "Release '2.2.13-SNAPSHOT' already present
 			// still we should fail here and report those failures to the website team
-			client.updateProjectMetadata(entry.getKey(), entry.getValue(), true, false);
-		});
+			client.updateProjectMetadata(entry.getKey(), entry.getValue(), true, false));
 
-		ExecutionUtils.run(executor, stream, entry -> {
+		ExecutionUtils.run(executor, stream, entry ->
 
 			// Sometimes we see 404 Not Found: [no body], sometimes
 			// 400 Bad Request: "Release '2.2.13-SNAPSHOT' already present
 			// still we should fail here and report those failures to the website team
-			client.updateProjectMetadata(entry.getKey(), entry.getValue(), false, true);
-		});
+			client.updateProjectMetadata(entry.getKey(), entry.getValue(), false, true));
 	}
 
 	/**

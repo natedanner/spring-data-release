@@ -186,6 +186,6 @@ public interface IssueTracker extends Plugin<SupportedProject> {
 	void closeTicket(ModuleIteration module, Ticket ticket);
 
 	enum TicketType {
-		Task, DependencyUpgrade;
+		Task, DependencyUpgrade
 	}
 }

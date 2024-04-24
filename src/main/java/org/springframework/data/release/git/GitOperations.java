@@ -89,7 +89,7 @@ import org.springframework.util.Assert;
 public class GitOperations {
 
 	private enum BranchCheckoutMode {
-		CREATE_ONLY, CREATE_AND_UPDATE;
+		CREATE_ONLY, CREATE_AND_UPDATE
 	}
 
 	GitServer server = new GitServer();
@@ -109,9 +109,8 @@ public class GitOperations {
 
 		Assert.notNull(train, "Train must not be null!");
 
-		ExecutionUtils.run(executor, train, module -> {
-			reset(module.getSupportedProject(), Branch.from(module));
-		});
+		ExecutionUtils.run(executor, train, module ->
+			reset(module.getSupportedProject(), Branch.from(module)));
 	}
 
 	public void checkout(Train train) {
@@ -1142,7 +1141,7 @@ public class GitOperations {
 	/**
 	 * {@link CredentialsProvider} for GPG Keys used with JGit Commit Signing.
 	 */
-	private static class GpgPassphraseProvider extends CredentialsProvider {
+	private static final class GpgPassphraseProvider extends CredentialsProvider {
 
 		private final Gpg gpg;
 

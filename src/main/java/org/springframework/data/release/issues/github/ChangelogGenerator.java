@@ -102,7 +102,7 @@ public class ChangelogGenerator {
 			content.append("## ").append(section).append(String.format("%n"));
 			issues.stream().map(issue -> getFormattedIssue(issue, includeIssueNumbers)).forEach(content::append);
 
-			result.append((result.length() != 0) ? String.format("%n") : "");
+			result.append(result.length() != 0 ? String.format("%n") : "");
 			result.append(sectionContentPostProcessor.apply(section, content.toString()));
 		});
 	}
@@ -136,7 +136,7 @@ public class ChangelogGenerator {
 
 	private void addContributorsContent(StringBuilder content, Set<GitHubUser> contributors) {
 		content.append(String.format("%n## "));
-		content.append((this.contributorsTitle != null) ? this.contributorsTitle : ":heart: Contributors");
+		content.append(this.contributorsTitle != null ? this.contributorsTitle : ":heart: Contributors");
 		content.append(String.format("%nWe'd like to thank all the contributors who worked on this release!%n%n"));
 		contributors.stream().map(this::formatContributors).forEach(content::append);
 	}

@@ -96,11 +96,10 @@ public class DependencyCommands extends TimedCommand {
 				.append(iteration.getReleaseTrainNameAndVersion()).append(System.lineSeparator())
 				.append(System.lineSeparator());
 
-		dependencies.forEach((dependency, dependencyVersion) -> {
+		dependencies.forEach((dependency, dependencyVersion) ->
 
 			report.append(String.format("* %s (%s:%s): %s", dependency.getName(), dependency.getGroupId(),
-					dependency.getArtifactId(), dependencyVersion.getIdentifier())).append(System.lineSeparator());
-		});
+					dependency.getArtifactId(), dependencyVersion.getIdentifier())).append(System.lineSeparator()));
 
 		return report.toString();
 	}

@@ -467,9 +467,7 @@ class MavenBuildSystem implements BuildSystem {
 				arg("artifactory.distribution-repository").withValue(authentication.getDistributionRepository()),
 				arg("artifactory.username").withValue(authentication.getUsername()),
 				arg("artifactory.password").withValue(authentication.getPassword()))
-				.andIf(deploymentInformation != null, () -> {
-					return arg("artifactory.build-number").withValue(deploymentInformation.getBuildNumber());
-				}));
+				.andIf(deploymentInformation != null, () -> arg("artifactory.build-number").withValue(deploymentInformation.getBuildNumber())));
 
 		mvn.execute(supportedProject, CommandLine.of(Goal.CLEAN, Goal.DEPLOY, //
 				SKIP_TESTS, profile("distribute-schema"), Argument.of("-B"),
@@ -477,9 +475,7 @@ class MavenBuildSystem implements BuildSystem {
 				arg("artifactory.distribution-repository").withValue(authentication.getDistributionRepository()),
 				arg("artifactory.username").withValue(authentication.getUsername()),
 				arg("artifactory.password").withValue(authentication.getPassword()))
-				.andIf(deploymentInformation != null, () -> {
-					return arg("artifactory.build-number").withValue(deploymentInformation.getBuildNumber());
-				}));
+				.andIf(deploymentInformation != null, () -> arg("artifactory.build-number").withValue(deploymentInformation.getBuildNumber())));
 
 		logger.log(project, "Successfully finished distribution build!");
 

@@ -126,6 +126,7 @@ public class UpdateInformation {
 				if (usesCalver) {
 					return String.format("%s-SNAPSHOT", train.getNextBugfixName());
 				}
+				break;
 
 			case CLEANUP:
 
